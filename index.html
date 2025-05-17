@@ -2,34 +2,120 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Informe de Avistamientos - Looker Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Informe de Avistamientos OVNIs</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    /* Reset básico */
+    * {
       margin: 0;
-      background-color: #f4f4f4;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f0f0f0;
+      line-height: 1.6;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      max-width: 900px;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #e0e0e0;
+      text-shadow: 1px 1px 5px #0d94bf;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: #c1d1dbcc;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    main {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      padding: 20px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
     }
-    h1 {
-      margin-bottom: 20px;
-      color: #333;
-    }
+
     iframe {
+      width: 100%;
+      height: 700px;
       border: none;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    iframe:hover {
+      transform: scale(1.02);
+    }
+
+    footer {
+      margin-top: 60px;
+      color: #c1d1dbcc;
+      font-size: 0.9rem;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      main {
+        padding: 10px;
+      }
+      iframe {
+        height: 500px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Informe de Avistamientos</h1>
-  <iframe width="900" height="600" src="https://lookerstudio.google.com/embed/reporting/e6b830b3-2dae-4575-935e-7ef95473fad3/page/fPtKF" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+
+  <header>
+    <h1>Informe de Avistamientos OVNIs</h1>
+    <p>
+      Este informe presenta un análisis exhaustivo sobre la cantidad y distribución de avistamientos de objetos voladores no identificados (OVNIs). Se incluyen las cinco formas más comunes observadas, la evolución temporal anual, y la distribución geográfica en los Estados Unidos.
+    </p>
+  </header>
+
+  <main>
+    <iframe
+      src="https://lookerstudio.google.com/embed/reporting/e6b830b3-2dae-4575-935e-7ef95473fad3/page/fPtKF"
+      allowfullscreen
+      sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+      title="Informe Looker Studio de avistamientos OVNIs"
+      loading="lazy"
+    ></iframe>
+  </main>
+
+  <footer>
+    &copy; 2025 Valentina Curín Salazar. Proyecto de Análisis de Datos de OVNIs.
+  </footer>
+
 </body>
 </html>
-
-
