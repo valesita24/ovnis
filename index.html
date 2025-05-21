@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Informe de Avistamientos OVNIs</title>
   <style>
+    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
@@ -13,38 +14,18 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      background: url('stars.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #f0f0f0;
       line-height: 1.6;
       padding: 40px 20px;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    /* Estrellas */
-    .stars {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent url('https://raw.githubusercontent.com/Valesita24/ovnis/main/stars.png') repeat;
-      animation: moveStars 200s linear infinite;
-      z-index: -1;
-    }
-
-    @keyframes moveStars {
-      from {background-position: 0 0;}
-      to {background-position: -10000px 5000px;}
     }
 
     header {
       max-width: 900px;
+      margin: 0 auto 50px auto;
       text-align: center;
-      margin-bottom: 50px;
     }
 
     header h1 {
@@ -66,12 +47,11 @@
     main {
       max-width: 900px;
       width: 100%;
+      margin: 0 auto;
       background: rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
       padding: 20px;
-      display: flex;
-      justify-content: center;
     }
 
     iframe {
@@ -93,6 +73,13 @@
       font-size: 0.9rem;
       text-align: center;
       max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    audio {
+      display: block;
+      margin: 30px auto;
     }
 
     @media (max-width: 640px) {
@@ -112,9 +99,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Fondo de estrellas -->
-  <div class="stars"></div>
 
   <header>
     <h1>Informe de Avistamientos OVNIs</h1>
@@ -141,8 +125,10 @@
     <source src="ex.mp3" type="audio/mpeg" />
     Tu navegador no soporta el elemento de audio.
   </audio>
+
 </body>
 </html>
+
 
 
 
