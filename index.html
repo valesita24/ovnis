@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -12,20 +12,43 @@
       box-sizing: border-box;
     }
 
-    body {
+    body, html {
+      height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('stars.jpg') no-repeat center center fixed;
-      background-size: cover;
       color: #f0f0f0;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Video de fondo */
+    #video-bg {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      object-fit: cover;
+    }
+
+    body {
       padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: none; /* Se quita el fondo para mostrar solo el video */
       min-height: 100vh;
     }
 
     header {
       max-width: 900px;
-      margin: 0 auto 50px auto;
       text-align: center;
+      margin-bottom: 50px;
+      background: rgba(0,0,0,0.4);
+      padding: 20px;
+      border-radius: 12px;
     }
 
     header h1 {
@@ -47,11 +70,12 @@
     main {
       max-width: 900px;
       width: 100%;
-      margin: 0 auto;
       background: rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
       padding: 20px;
+      display: flex;
+      justify-content: center;
     }
 
     iframe {
@@ -73,13 +97,14 @@
       font-size: 0.9rem;
       text-align: center;
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      background: rgba(0,0,0,0.4);
+      padding: 10px 20px;
+      border-radius: 12px;
     }
 
     audio {
-      display: block;
-      margin: 30px auto;
+      margin-top: 40px;
+      outline: none;
     }
 
     @media (max-width: 640px) {
@@ -99,6 +124,11 @@
   </style>
 </head>
 <body>
+
+  <video autoplay muted loop id="video-bg" playsinline>
+    <source src="stars.webm" type="video/webm" />
+    Tu navegador no soporta video de fondo.
+  </video>
 
   <header>
     <h1>Informe de Avistamientos OVNIs</h1>
@@ -128,6 +158,7 @@
 
 </body>
 </html>
+
 
 
 
