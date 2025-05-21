@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Informe de Avistamientos OVNIs</title>
   <style>
+    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
@@ -77,10 +78,6 @@
       max-width: 900px;
     }
 
-    audio {
-      margin-top: 30px;
-    }
-
     @media (max-width: 640px) {
       header h1 {
         font-size: 2rem;
@@ -116,15 +113,22 @@
     ></iframe>
   </main>
 
-  <!-- Audio de fondo -->
-  <audio controls autoplay loop>
-    <source src="audio/expediente-x.mp3" type="audio/mp3" />
-    Tu navegador no soporta el elemento de audio.
-  </audio>
-
   <footer>
     <p>© 2025 Valentina Curín Salazar y Javiera Hernández. Proyecto académico de Análisis de Datos sobre Avistamientos de OVNIs.</p>
   </footer>
 
+  <!-- Script para reproducir la música automáticamente con primer clic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const audio = new Audio("audio/expediente-x.mp3");
+      audio.loop = true;
+
+      document.addEventListener("click", () => {
+        audio.play();
+      }, { once: true });
+    });
+  </script>
+
 </body>
 </html>
+
