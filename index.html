@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -78,6 +78,39 @@
       max-width: 900px;
     }
 
+    /* Contenedor para imágenes y audio */
+    .media-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 30px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .ovni, .marciano {
+      width: 120px;
+      height: auto;
+      opacity: 0.8;
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .ovni:hover, .marciano:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    audio {
+      outline: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      max-width: 300px;
+      width: 100%;
+    }
+
     @media (max-width: 640px) {
       header h1 {
         font-size: 2rem;
@@ -90,6 +123,16 @@
       }
       iframe {
         height: 500px;
+      }
+      .media-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .ovni, .marciano {
+        width: 100px;
+      }
+      audio {
+        max-width: 100%;
       }
     }
   </style>
@@ -113,10 +156,20 @@
     ></iframe>
   </main>
 
-  <footer>
-  <p>© 2025 Valentina Curín Salazar y Javiera Hernández. Proyecto académico de Análisis de Datos sobre Avistamientos de OVNIs.</p>
-</footer>
+  <!-- Contenedor imágenes y audio -->
+  <div class="media-container">
+    <img src="images/secuestrando.png" alt="Ovni" class="ovni" />
+    <img src="images/nave_espacial.png" alt="Marciano" class="marciano" />
+    <audio controls autoplay loop>
+      <source src="audio/reproduccion_de_video.weba" type="audio/webm" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </div>
 
+  <footer>
+    <p>© 2025 Valentina Curín Salazar y Javiera Hernández. Proyecto académico de Análisis de Datos sobre Avistamientos de OVNIs.</p>
+  </footer>
 
 </body>
 </html>
+
