@@ -22,6 +22,7 @@
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
+      position: relative;
     }
 
     #bg-video {
@@ -128,6 +129,50 @@
         height: 500px;
       }
     }
+
+    /* --- Animación OVNI --- */
+    #contenedor-ovni {
+      position: fixed; /* Fijo para que se mueva sobre toda la pantalla */
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 300px; /* Altura del espacio donde se mueve */
+      pointer-events: none; /* Para que no interfiera con clicks */
+      z-index: 10; /* Sobre todo */
+      overflow: visible;
+    }
+
+    .ovni-movimiento {
+      position: absolute;
+      width: 80px;
+      animation: giro 4s linear infinite, mover 8s ease-in-out infinite alternate;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    @keyframes giro {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes mover {
+      0% {
+        left: 0;
+        top: 20px;
+      }
+      50% {
+        left: 80%;
+        top: 150px;
+      }
+      100% {
+        left: 0;
+        top: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -148,6 +193,11 @@
       Este informe presenta un análisis exhaustivo sobre la cantidad y distribución de avistamientos de objetos voladores no identificados (OVNIs). Se incluyen las cinco formas más comunes observadas, la evolución temporal anual, y la distribución geográfica en los Estados Unidos.
     </p>
   </header>
+
+  <!-- Contenedor del OVNI animado -->
+  <div id="contenedor-ovni">
+    <img src="ufo.jpg" alt="OVNI" class="ovni-movimiento" />
+  </div>
 
   <main>
     <iframe
