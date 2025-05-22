@@ -61,6 +61,26 @@
       font-weight: 400;
     }
 
+    /* Estilo del botón */
+    button {
+      background-color: #0d94bf;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      margin: 20px 0;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 2;
+      position: relative;
+    }
+
+    button:hover {
+      background-color: #0bb3e5;
+      transform: scale(1.05);
+    }
+
     main {
       max-width: 900px;
       width: 100%;
@@ -123,6 +143,9 @@
 
   <header>
     <h1>Informe de Avistamientos OVNIs</h1>
+    <!-- 👽 Botón con alerta -->
+    <button onclick="alert('¡Avistamiento confirmado!')">¡Vi un OVNI!</button>
+
     <p>
       Este informe presenta un análisis exhaustivo sobre la cantidad y distribución de avistamientos de objetos voladores no identificados (OVNIs). Se incluyen las cinco formas más comunes observadas, la evolución temporal anual, y la distribución geográfica en los Estados Unidos.
     </p>
@@ -154,6 +177,7 @@
 
 </body>
 </html>
+
 
 
 
