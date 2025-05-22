@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Informe de Avistamientos OVNIs</title>
   <style>
-    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
@@ -25,7 +24,6 @@
       overflow-x: hidden;
     }
 
-    /* Video fondo */
     #bg-video {
       position: fixed;
       top: 0;
@@ -61,7 +59,6 @@
       font-weight: 400;
     }
 
-    /* Estilo del botón */
     button {
       background-color: #0d94bf;
       border: none;
@@ -143,8 +140,9 @@
 
   <header>
     <h1>Informe de Avistamientos OVNIs</h1>
-    <!-- 👽 Botón con alerta -->
-    <button onclick="alert('¡Avistamiento confirmado!')">¡Vi un OVNI!</button>
+
+    <!-- Botón con sonido y alerta -->
+    <button onclick="reproducirSonido()">¡Vi un OVNI!</button>
 
     <p>
       Este informe presenta un análisis exhaustivo sobre la cantidad y distribución de avistamientos de objetos voladores no identificados (OVNIs). Se incluyen las cinco formas más comunes observadas, la evolución temporal anual, y la distribución geográfica en los Estados Unidos.
@@ -165,18 +163,34 @@
     <p>© 2025 Valentina Curín Salazar y Javiera Hernández. Proyecto académico de Análisis de Datos sobre Avistamientos de OVNIs.</p>
   </footer>
 
-  <!-- Audio oculto que se activa al primer clic -->
-  <audio id="audio" src="ex.mp3"></audio>
+  <!-- Audios -->
+  <audio id="audioFondo" src="ex.mp3" loop></audio>
+  <audio id="ovniAudio" src="n.mp3"></audio>
 
+  <!-- Scripts -->
   <script>
+    // Reproduce la música de fondo al primer clic en la página
     document.body.addEventListener('click', () => {
-      const audio = document.getElementById('audio');
-      if (audio.paused) audio.play();
+      const fondo = document.getElementById('audioFondo');
+      fondo.volume = 0.3; // volumen bajo
+      if (fondo.paused) fondo.play();
     }, {once: true});
+
+    // Función que se activa al presionar el botón
+    function reproducirSonido() {
+      const ovni = document.getElementById('ovniAudio');
+      ovni.volume = 0.8; // volumen alto
+      ovni.currentTime = 0; // reinicia si ya sonó antes
+      ovni.play();
+      alert('¡Avistamiento confirmado!');
+    }
   </script>
 
 </body>
 </html>
+
+
+
 
 
 
