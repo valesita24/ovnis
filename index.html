@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -22,6 +22,7 @@
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
+      position: relative;
     }
 
     #bg-video {
@@ -93,16 +94,17 @@
       height: 700px;
     }
 
-    /* Estilo para la imagen alien con fondo transparente */
-    img.alien {
-      max-width: 400px;  /* tamaño adaptado para que no sea gigante */
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 0 10px #0d94bf);
-      border-radius: 12px;
-      background: transparent;
-      cursor: default;
-      user-select: none;
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    iframe:hover {
+      transform: scale(1.02);
     }
 
     footer {
@@ -126,8 +128,52 @@
         padding: 10px;
         height: 500px;
       }
-      img.alien {
-        max-width: 90vw;
+    }
+
+    /* --- Animación OVNI --- */
+    #contenedor-ovni {
+      position: fixed; /* fijo para que se mueva sobre toda la pantalla */
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 300px; /* altura del espacio donde se mueve */
+      pointer-events: none; /* para que no interfiera con clicks */
+      z-index: 10; /* sobre todo */
+      overflow: visible;
+    }
+
+    .ovni-movimiento {
+      position: absolute;
+      width: 620px;
+      height: 381px;
+      animation: giro 4s linear infinite, mover 8s ease-in-out infinite alternate;
+      user-select: none;
+      -webkit-user-drag: none;
+      image-rendering: auto; /* para mejor suavidad */
+      background: transparent;
+    }
+
+    @keyframes giro {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes mover {
+      0% {
+        left: 0;
+        top: 20px;
+      }
+      50% {
+        left: 80%;
+        top: 150px;
+      }
+      100% {
+        left: 0;
+        top: 20px;
       }
     }
   </style>
@@ -151,9 +197,19 @@
     </p>
   </header>
 
+  <!-- Contenedor del OVNI animado -->
+  <div id="contenedor-ovni">
+    <img src="ovni.png" alt="OVNI" class="ovni-movimiento" />
+  </div>
+
   <main>
-    <!-- Aquí la imagen alien -->
-    <img src="alien.png" alt="Alienígena" class="alien" />
+    <iframe
+      src="https://lookerstudio.google.com/embed/reporting/e6b830b3-2dae-4575-935e-7ef95473fad3/page/fPtKF"
+      allowfullscreen
+      sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+      title="Informe Looker Studio de avistamientos OVNIs"
+      loading="lazy"
+    ></iframe>
   </main>
 
   <footer>
@@ -185,6 +241,7 @@
 
 </body>
 </html>
+
 
 
 
