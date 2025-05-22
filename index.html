@@ -5,7 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Informe de Avistamientos OVNIs</title>
   <style>
-    /* ... (todo tu CSS se mantiene igual) ... */
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: black;
+      color: #f0f0f0;
+      line-height: 1.6;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Video fondo */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    header {
+      max-width: 900px;
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #e0e0e0;
+      text-shadow: 1px 1px 5px #0d94bf;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: #c1d1dbcc;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* Estilo del botón */
+    button {
+      background-color: #0d94bf;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      margin: 20px 0;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 2;
+      position: relative;
+    }
+
+    button:hover {
+      background-color: #0bb3e5;
+      transform: scale(1.05);
+    }
+
+    main {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      overflow: auto;
+      height: 700px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    iframe:hover {
+      transform: scale(1.02);
+    }
+
+    footer {
+      margin-top: 60px;
+      color: #c1d1dbcc;
+      font-size: 0.9rem;
+      text-align: center;
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      main {
+        padding: 10px;
+        height: 500px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -18,8 +143,8 @@
 
   <header>
     <h1>Informe de Avistamientos OVNIs</h1>
-    
-    <!-- 👽 Botón que reproduce sonido -->
+
+    <!-- 👽 Botón que reproduce el sonido n.mp3 -->
     <button onclick="reproducirSonido()">¡Vi un OVNI!</button>
 
     <p>
@@ -41,20 +166,31 @@
     <p>© 2025 Valentina Curín Salazar y Javiera Hernández. Proyecto académico de Análisis de Datos sobre Avistamientos de OVNIs.</p>
   </footer>
 
-  <!-- Audio oculto que se activa al hacer clic en el botón -->
-  <audio id="audio" src="n.mp3" preload="auto"></audio>
+  <!-- 🎵 Audio de fondo que se activa al primer clic -->
+  <audio id="audioFondo" src="ex.mp3"></audio>
+
+  <!-- 👽 Audio específico del botón -->
+  <audio id="ovniAudio" src="n.mp3" preload="auto"></audio>
 
   <script>
+    // Reproducir música de fondo al primer clic en cualquier parte del cuerpo
+    document.body.addEventListener('click', () => {
+      const fondo = document.getElementById('audioFondo');
+      if (fondo.paused) fondo.play();
+    }, {once: true});
+
+    // Función para el botón "¡Vi un OVNI!"
     function reproducirSonido() {
-      const audio = document.getElementById('audio');
-      audio.currentTime = 0; // Reinicia el sonido si ya está sonando
-      audio.play();
+      const ovni = document.getElementById('ovniAudio');
+      ovni.currentTime = 0; // reinicia si ya se había reproducido
+      ovni.play();
       alert('¡Avistamiento confirmado!');
     }
   </script>
 
 </body>
 </html>
+
 
 
 
