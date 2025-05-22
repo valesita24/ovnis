@@ -14,18 +14,35 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('stars.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: black;
       color: #f0f0f0;
       line-height: 1.6;
       padding: 40px 20px;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Video fondo */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
     }
 
     header {
       max-width: 900px;
-      margin: 0 auto 50px auto;
       text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
@@ -44,19 +61,44 @@
       font-weight: 400;
     }
 
+    /* Estilo del botón */
+    button {
+      background-color: #0d94bf;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      margin: 20px 0;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 2;
+      position: relative;
+    }
+
+    button:hover {
+      background-color: #0bb3e5;
+      transform: scale(1.05);
+    }
+
     main {
       max-width: 900px;
       width: 100%;
-      margin: 0 auto;
       background: rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
       padding: 20px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      overflow: auto;
+      height: 700px;
     }
 
     iframe {
       width: 100%;
-      height: 700px;
+      height: 100%;
       border: none;
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
@@ -73,13 +115,8 @@
       font-size: 0.9rem;
       text-align: center;
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    audio {
-      display: block;
-      margin: 30px auto;
+      position: relative;
+      z-index: 1;
     }
 
     @media (max-width: 640px) {
@@ -91,8 +128,6 @@
       }
       main {
         padding: 10px;
-      }
-      iframe {
         height: 500px;
       }
     }
@@ -100,8 +135,17 @@
 </head>
 <body>
 
+  <!-- Video de fondo -->
+  <video autoplay muted loop id="bg-video" playsinline>
+    <source src="stars.webm" type="video/webm" />
+    Tu navegador no soporta la reproducción de video.
+  </video>
+
   <header>
     <h1>Informe de Avistamientos OVNIs</h1>
+    <!-- 👽 Botón con alerta -->
+    <button onclick="alert('¡Avistamiento confirmado!')">¡Vi un OVNI!</button>
+
     <p>
       Este informe presenta un análisis exhaustivo sobre la cantidad y distribución de avistamientos de objetos voladores no identificados (OVNIs). Se incluyen las cinco formas más comunes observadas, la evolución temporal anual, y la distribución geográfica en los Estados Unidos.
     </p>
@@ -121,13 +165,20 @@
     <p>© 2025 Valentina Curín Salazar y Javiera Hernández. Proyecto académico de Análisis de Datos sobre Avistamientos de OVNIs.</p>
   </footer>
 
-  <audio controls>
-    <source src="ex.mp3" type="audio/mpeg" />
-    Tu navegador no soporta el elemento de audio.
-  </audio>
+  <!-- Audio oculto que se activa al primer clic -->
+  <audio id="audio" src="ex.mp3"></audio>
+
+  <script>
+    document.body.addEventListener('click', () => {
+      const audio = document.getElementById('audio');
+      if (audio.paused) audio.play();
+    }, {once: true});
+  </script>
 
 </body>
 </html>
+
+
 
 
 
